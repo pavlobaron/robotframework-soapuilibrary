@@ -3,3 +3,6 @@ do (functional tests, load tests etc.) can (will) be wrapped through this test l
 
 The very first version (0.1) can now run all test cases in all suits in one single SoapUI project and report
 the status to Robot. There is still very much work to be done. Feedback and contributions are welcome anytime.
+
+There is an example in "examples/currency" where SoapUI connects to an external public web service and makes a request.
+No further details are checked, only the request success. Run "examples/currency/run.sh" to see it in action.
