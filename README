@@ -1,7 +1,7 @@
 This is a test library for the Robot Framework, which allows to run and check SoapUI test. Whatever SoapUI can
 do (functional tests, load tests etc.) can (will) be wrapped through this test library.
 
-The very first version (0.1) can now run all test cases in all suits in one single SoapUI project and report
+The very first version (0.1) can now run all test cases in all suites in one single SoapUI project and report
 the status to Robot. There is still very much work to be done. Feedback and contributions are welcome anytime.
 
 There is an example in "examples/currency" where SoapUI connects to an external public web service and makes a request.
