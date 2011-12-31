@@ -1,0 +1,6 @@
+*** Settings ***
+Library  SOAPUILibrary.py
+
+*** Test Cases ***
+Currency  [Documentation]  Example of the Robot SOAPUILibrary
+    ${STATUS}  Run Project  ${PRJ}
