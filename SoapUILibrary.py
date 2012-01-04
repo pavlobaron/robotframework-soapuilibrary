@@ -1,6 +1,6 @@
 from com.eviware.soapui.tools import (SoapUITestCaseRunner)
 
-class SOAPUILibrary:
+class SoapUILibrary:
 
     ROBOT_LIBRARY_SCOPE = 'TEST SUITE'
     ROBOT_LIBRARY_VERSION = '0.1'
