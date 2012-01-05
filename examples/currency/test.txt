@@ -2,8 +2,11 @@
 Library  SoapUILibrary.py
 
 *** Test Cases ***
-Project  [Documentation]  Run all SoapUI suites/tests
+
+Test Case  [Documentation]  Run a single test case
     SoapUI Project  ${PRJ}
+    SoapUI Suite  ${SUITE}
+    SoapUI Case  ${CASE}
     SoapUI Run
 
 Suite  [Documentation]  Run all tests of the given suite
@@ -11,8 +14,6 @@ Suite  [Documentation]  Run all tests of the given suite
     SoapUI Suite  ${SUITE}
     SoapUI Run
 
-Test Case  [Documentation]  Run a single test case
+Project  [Documentation]  Run all SoapUI suites/tests
     SoapUI Project  ${PRJ}
-    SoapUI Suite  ${SUITE}
-    SoapUI Case  ${CASE}
     SoapUI Run
