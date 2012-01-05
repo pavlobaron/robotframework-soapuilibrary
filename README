@@ -1,6 +1,8 @@
 This is a test library for the Robot Framework, which allows to run and check SoapUI test. Whatever SoapUI can
 do (functional tests, load tests etc.) can (will) be wrapped through this test library.
 
+It is written for Jython, since it uses SoapUI's Java API.
+
 Current version 0.2 can run whole projects, single test suites with all their cases and single test cases. The status is reported to Robot.
 
 There is still a lot of work to be done. Feedback and contributions are welcome anytime.
