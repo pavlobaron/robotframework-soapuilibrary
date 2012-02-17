@@ -18,14 +18,18 @@
 
 from com.eviware.soapui.tools import (SoapUITestCaseRunner)
 
+from robot.api import logger
+
+
 class SoapUILibrary:
     """ The main class of the library """
-    
+
     ROBOT_LIBRARY_SCOPE = 'TEST CASE'
     ROBOT_LIBRARY_VERSION = '0.2'
 
     def __init__(self):
         self.__runner = None
+        self._project_properties = []
 
     def soapui_project(self, prj):
         """ Initialize the runner and set the project string """
@@ -40,8 +44,34 @@ class SoapUILibrary:
         """ Set the test case string """
         self.__runner.setTestCase(c)
 
+    def soapui_set_project_property(self, *properties):
+        """ Sets project properties for the current test run.
+        This assumes that you have already initialized the project via
+        the `SoapUI Project` keyword.
+
+        `properies` may contain multiple statements, and each must be specified as: key=value.
+
+        This is useful to data drive your existing SoapUI tests via property expansion.
+        For more information see: http://www.soapui.org/Scripting-Properties/property-expansion.html
+
+        Example:
+        | SoapUI Project | My Project |
+        | SoapUI Set Project Property | ServiceEndpoint=https://staging.company.com | # set a single property |
+        | SoapUI Set Project Property | CustomProperty=foo | AnotherProperty=bar | # or set multiple properties |
+        """
+        for prop in properties:
+            if len(prop.split('=')) == 2:
+                self._project_properties.append(prop)
+            else:
+                logger.warn("Skipping property: '%s'. Properties must be specified as: key=value" % prop)
+        try:
+            self.__runner.setProjectProperties(self._project_properties)
+        except AttributeError:
+            logger.warn('No project set. Cannot set project properties.')
+
     def soapui_run(self):
         """ Run the runner and report to Robot """
+        logger.info("Running with the following project properties set: %s" % self._project_properties)
         if not self.__runner.run():
             raise AssertionError('FAIL: failed to run')
 
