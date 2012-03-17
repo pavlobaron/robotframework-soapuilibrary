@@ -17,9 +17,11 @@
 #
 
 from com.eviware.soapui.tools import (SoapUITestCaseRunner)
+from com.eviware.soapui.tools import (SoapUIMockServiceRunner)
 
 from robot.api import logger
 
+import thread
 
 class SoapUILibrary:
     """ The main class of the library """
@@ -29,6 +31,7 @@ class SoapUILibrary:
 
     def __init__(self):
         self.__runner = None
+        self.__mockrunner = None
         self._project_properties = []
 
     def soapui_project(self, prj):
@@ -78,3 +81,18 @@ class SoapUILibrary:
         n = self.__runner.getFailedTests().size()
         if n != 0:
             raise AssertionError('FAIL: ' + str(n) + ' tests failed')
+
+    def soapui_start_mock_service(self, p, m):
+        """ Runs a mock service """
+        try:
+            self.__mockrunner = SoapUIMockServiceRunner()
+            self.__mockrunner.setProjectFile(p)
+            self.__mockrunner.setMockService(m)
+            self.__mockrunner.setBlock(False)
+            self.__mockrunner.run()
+        except Exception, e:
+            raise AssertionError('FAIL: Error running the mock service ' + m + '. Reason: ' + str(e))
+
+    def soapui_stop_mock_service(self):
+        """ Stops the mock service """
+        self.__mockrunner.stopAll()

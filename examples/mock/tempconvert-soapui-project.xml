@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project name="tempconvert" soapui-version="4.0.1" abortOnError="false" runType="SEQUENTIAL" resourceRoot="" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="TempConvertSoap12" type="wsdl" bindingName="{http://tempuri.org/}TempConvertSoap12" soapVersion="1_2" anonymous="optional" definition="http://www.w3schools.com/webservices/tempconvert.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://www.w3schools.com/webservices/tempconvert.asmx?WSDL"><con:part><con:url>http://www.w3schools.com/webservices/tempconvert.asmx?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FahrenheitToCelsius">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Fahrenheit" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FahrenheitToCelsiusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FahrenheitToCelsiusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CelsiusToFahrenheit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Celsius" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CelsiusToFahrenheitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CelsiusToFahrenheitResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FahrenheitToCelsiusSoapIn">
+    <wsdl:part name="parameters" element="tns:FahrenheitToCelsius"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusSoapOut">
+    <wsdl:part name="parameters" element="tns:FahrenheitToCelsiusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitSoapIn">
+    <wsdl:part name="parameters" element="tns:CelsiusToFahrenheit"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitSoapOut">
+    <wsdl:part name="parameters" element="tns:CelsiusToFahrenheitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusHttpPostIn">
+    <wsdl:part name="Fahrenheit" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitHttpPostIn">
+    <wsdl:part name="Celsius" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:portType name="TempConvertSoap">
+    <wsdl:operation name="FahrenheitToCelsius">
+      <wsdl:input message="tns:FahrenheitToCelsiusSoapIn"/>
+      <wsdl:output message="tns:FahrenheitToCelsiusSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <wsdl:input message="tns:CelsiusToFahrenheitSoapIn"/>
+      <wsdl:output message="tns:CelsiusToFahrenheitSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TempConvertHttpPost">
+    <wsdl:operation name="FahrenheitToCelsius">
+      <wsdl:input message="tns:FahrenheitToCelsiusHttpPostIn"/>
+      <wsdl:output message="tns:FahrenheitToCelsiusHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <wsdl:input message="tns:CelsiusToFahrenheitHttpPostIn"/>
+      <wsdl:output message="tns:CelsiusToFahrenheitHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TempConvertSoap" type="tns:TempConvertSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <soap:operation soapAction="http://tempuri.org/FahrenheitToCelsius" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <soap:operation soapAction="http://tempuri.org/CelsiusToFahrenheit" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TempConvertSoap12" type="tns:TempConvertSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <soap12:operation soapAction="http://tempuri.org/FahrenheitToCelsius" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <soap12:operation soapAction="http://tempuri.org/CelsiusToFahrenheit" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TempConvertHttpPost" type="tns:TempConvertHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <http:operation location="/FahrenheitToCelsius"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <http:operation location="/CelsiusToFahrenheit"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TempConvert">
+    <wsdl:port name="TempConvertSoap" binding="tns:TempConvertSoap">
+      <soap:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TempConvertSoap12" binding="tns:TempConvertSoap12">
+      <soap12:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TempConvertHttpPost" binding="tns:TempConvertHttpPost">
+      <http:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.w3schools.com/webservices/tempconvert.asmx</con:endpoint><con:endpoint>http://localhost:8088/mockTempConvertSoap12</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://tempuri.org/CelsiusToFahrenheit" name="CelsiusToFahrenheit" bindingOperationName="CelsiusToFahrenheit" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockTempConvertSoap12</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   <soap:Header/>
+   <soap:Body>
+      <tem:CelsiusToFahrenheit>
+         <!--Optional:-->
+         <tem:Celsius>?</tem:Celsius>
+      </tem:CelsiusToFahrenheit>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TempConvertSoap/CelsiusToFahrenheitRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation isOneWay="false" action="http://tempuri.org/FahrenheitToCelsius" name="FahrenheitToCelsius" bindingOperationName="FahrenheitToCelsius" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockTempConvertSoap12</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   <soap:Header/>
+   <soap:Body>
+      <tem:FahrenheitToCelsius>
+         <!--Optional:-->
+         <tem:Fahrenheit>?</tem:Fahrenheit>
+      </tem:FahrenheitToCelsius>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TempConvertSoap/FahrenheitToCelsiusRequest"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:interface xsi:type="con:WsdlInterface" wsaVersion="NONE" name="TempConvertSoap" type="wsdl" bindingName="{http://tempuri.org/}TempConvertSoap" soapVersion="1_1" anonymous="optional" definition="http://www.w3schools.com/webservices/tempconvert.asmx?WSDL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://www.w3schools.com/webservices/tempconvert.asmx?WSDL"><con:part><con:url>http://www.w3schools.com/webservices/tempconvert.asmx?WSDL</con:url><con:content><![CDATA[<wsdl:definitions targetNamespace="http://tempuri.org/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="FahrenheitToCelsius">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Fahrenheit" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="FahrenheitToCelsiusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FahrenheitToCelsiusResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CelsiusToFahrenheit">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Celsius" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CelsiusToFahrenheitResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CelsiusToFahrenheitResult" type="s:string"/>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="string" nillable="true" type="s:string"/>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="FahrenheitToCelsiusSoapIn">
+    <wsdl:part name="parameters" element="tns:FahrenheitToCelsius"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusSoapOut">
+    <wsdl:part name="parameters" element="tns:FahrenheitToCelsiusResponse"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitSoapIn">
+    <wsdl:part name="parameters" element="tns:CelsiusToFahrenheit"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitSoapOut">
+    <wsdl:part name="parameters" element="tns:CelsiusToFahrenheitResponse"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusHttpPostIn">
+    <wsdl:part name="Fahrenheit" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="FahrenheitToCelsiusHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitHttpPostIn">
+    <wsdl:part name="Celsius" type="s:string"/>
+  </wsdl:message>
+  <wsdl:message name="CelsiusToFahrenheitHttpPostOut">
+    <wsdl:part name="Body" element="tns:string"/>
+  </wsdl:message>
+  <wsdl:portType name="TempConvertSoap">
+    <wsdl:operation name="FahrenheitToCelsius">
+      <wsdl:input message="tns:FahrenheitToCelsiusSoapIn"/>
+      <wsdl:output message="tns:FahrenheitToCelsiusSoapOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <wsdl:input message="tns:CelsiusToFahrenheitSoapIn"/>
+      <wsdl:output message="tns:CelsiusToFahrenheitSoapOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="TempConvertHttpPost">
+    <wsdl:operation name="FahrenheitToCelsius">
+      <wsdl:input message="tns:FahrenheitToCelsiusHttpPostIn"/>
+      <wsdl:output message="tns:FahrenheitToCelsiusHttpPostOut"/>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <wsdl:input message="tns:CelsiusToFahrenheitHttpPostIn"/>
+      <wsdl:output message="tns:CelsiusToFahrenheitHttpPostOut"/>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="TempConvertSoap" type="tns:TempConvertSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <soap:operation soapAction="http://tempuri.org/FahrenheitToCelsius" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <soap:operation soapAction="http://tempuri.org/CelsiusToFahrenheit" style="document"/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TempConvertSoap12" type="tns:TempConvertSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <soap12:operation soapAction="http://tempuri.org/FahrenheitToCelsius" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <soap12:operation soapAction="http://tempuri.org/CelsiusToFahrenheit" style="document"/>
+      <wsdl:input>
+        <soap12:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="TempConvertHttpPost" type="tns:TempConvertHttpPost">
+    <http:binding verb="POST"/>
+    <wsdl:operation name="FahrenheitToCelsius">
+      <http:operation location="/FahrenheitToCelsius"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CelsiusToFahrenheit">
+      <http:operation location="/CelsiusToFahrenheit"/>
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded"/>
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="TempConvert">
+    <wsdl:port name="TempConvertSoap" binding="tns:TempConvertSoap">
+      <soap:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TempConvertSoap12" binding="tns:TempConvertSoap12">
+      <soap12:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+    <wsdl:port name="TempConvertHttpPost" binding="tns:TempConvertHttpPost">
+      <http:address location="http://www.w3schools.com/webservices/tempconvert.asmx"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://www.w3schools.com/webservices/tempconvert.asmx</con:endpoint></con:endpoints><con:operation isOneWay="false" action="http://tempuri.org/CelsiusToFahrenheit" name="CelsiusToFahrenheit" bindingOperationName="CelsiusToFahrenheit" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/webservices/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:CelsiusToFahrenheit>
+         <!--Optional:-->
+         <tem:Celsius>?</tem:Celsius>
+      </tem:CelsiusToFahrenheit>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/CelsiusToFahrenheit"/></con:call></con:operation><con:operation isOneWay="false" action="http://tempuri.org/FahrenheitToCelsius" name="FahrenheitToCelsius" bindingOperationName="FahrenheitToCelsius" type="Request-Response" inputName="" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call name="Request 1"><con:settings/><con:encoding>UTF-8</con:encoding><con:endpoint>http://www.w3schools.com/webservices/tempconvert.asmx</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:tem="http://tempuri.org/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <tem:FahrenheitToCelsius>
+         <!--Optional:-->
+         <tem:Fahrenheit>?</tem:Fahrenheit>
+      </tem:FahrenheitToCelsius>
+   </soapenv:Body>
+</soapenv:Envelope>]]></con:request><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/FahrenheitToCelsius"/></con:call></con:operation></con:interface><con:testSuite name="suite"><con:settings/><con:runType>SEQUENTIAL</con:runType><con:testCase failOnError="true" failTestCaseOnErrors="true" keepSession="false" maxResults="0" name="case" searchProperties="true" id="d176a7bc-616d-4d3e-9836-269c81fc57e3"><con:settings/><con:testStep type="request" name="mock"><con:settings/><con:config xsi:type="con:RequestStep" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:interface>TempConvertSoap12</con:interface><con:operation>CelsiusToFahrenheit</con:operation><con:request name="mock" outgoingWss="" incomingWss="" timeout="" sslKeystore="" useWsAddressing="false" useWsReliableMessaging="false" wssPasswordType=""><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8088/mockTempConvertSoap12</con:endpoint><con:request><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   <soap:Header/>
+   <soap:Body>
+      <tem:CelsiusToFahrenheit>
+         <!--Optional:-->
+         <tem:Celsius>?</tem:Celsius>
+      </tem:CelsiusToFahrenheit>
+   </soap:Body>
+</soap:Envelope>]]></con:request><con:assertion type="SOAP Response" name="SOAP Response"/><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TempConvertSoap/CelsiusToFahrenheitRequest"/><con:wsrmConfig version="1.2"/></con:request></con:config></con:testStep><con:properties/></con:testCase><con:properties/></con:testSuite><con:mockService port="8088" path="/mockTempConvertSoap12" host="polusok" name="mock"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.mock.WsdlMockService@require-soap-action">false</con:setting></con:settings><con:mockOperation name="CelsiusToFahrenheit" interface="TempConvertSoap12" operation="CelsiusToFahrenheit"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   <soap:Header/>
+   <soap:Body>
+      <tem:CelsiusToFahrenheitResponse>
+         <!--Optional:-->
+         <tem:CelsiusToFahrenheitResult>my_val</tem:CelsiusToFahrenheitResult>
+      </tem:CelsiusToFahrenheitResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TempConvertSoap/CelsiusToFahrenheitResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:mockOperation name="FahrenheitToCelsius" interface="TempConvertSoap12" operation="FahrenheitToCelsius"><con:settings/><con:dispatchStyle>SEQUENCE</con:dispatchStyle><con:defaultResponse>Response 1</con:defaultResponse><con:response name="Response 1" encoding="UTF-8"><con:settings/><con:responseContent><![CDATA[<soap:Envelope xmlns:soap="http://www.w3.org/2003/05/soap-envelope" xmlns:tem="http://tempuri.org/">
+   <soap:Header/>
+   <soap:Body>
+      <tem:FahrenheitToCelsiusResponse>
+         <!--Optional:-->
+         <tem:FahrenheitToCelsiusResult>my_val</tem:FahrenheitToCelsiusResult>
+      </tem:FahrenheitToCelsiusResponse>
+   </soap:Body>
+</soap:Envelope>]]></con:responseContent><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://tempuri.org/TempConvertSoap/FahrenheitToCelsiusResponse"/></con:response><con:dispatchConfig/></con:mockOperation><con:properties/></con:mockService><con:properties/><con:wssContainer/></con:soapui-project>

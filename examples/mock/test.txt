@@ -1,0 +1,12 @@
+*** Settings ***
+Library  SoapUILibrary.py
+
+*** Test Cases ***
+
+Test Case  [Documentation]  Run a mock service, then run a test
+    SoapUI Project  ${PRJ}
+    SoapUI Suite  ${SUITE}
+    SoapUI Case  ${CASE}
+    SoapUI Start Mock Service  ${PRJ}  ${MOCK}
+    SoapUI Run
+    SoapUI Stop Mock Service

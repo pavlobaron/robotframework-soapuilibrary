@@ -7,5 +7,5 @@ Current version 0.2 can run whole projects, single test suites with all their ca
 
 There is still a lot of work to be done. Feedback and contributions are welcome anytime.
 
-There is an example in "examples/currency" including a SoapUI project which is used to talk to a public currency conversion SOAP web service.
-Run "examples/currency/run.sh" to see it in action.
+There is a couple of examples in "examples/" including a SoapUI project which is used to talk to a public currency conversion SOAP web service
+and one that shows how to use mock services. Run the respective "run.sh" to see it in action.
